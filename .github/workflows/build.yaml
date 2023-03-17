@@ -11,6 +11,8 @@ name: Build
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       GO111MODULE: "on"
     steps:
@@ -40,21 +42,7 @@ jobs:
       - name: Create release
         if: startsWith(github.ref, 'refs/tags/v')
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
-      - name: Upload
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: xresloader/upload-to-github-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          file: "build/mac-auto-xlan-switch-*.tar.gz;build/mac-auto-xlan-switch-*.zip"
-          tags: true
-          draft: false
+          artifacts: "build/mac-auto-xlan-switch-*.tar.gz,build/mac-auto-xlan-switch-*.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
