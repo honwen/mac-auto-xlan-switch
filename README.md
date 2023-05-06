@@ -31,7 +31,7 @@ USAGE:
    mac-auto-xlan-switch [global options] command [command options] [arguments...]
 
 VERSION:
-   Git:[MISSING BUILD VERSION [GIT HASH]] (go1.19.5)
+   Git:[MISSING BUILD VERSION [GIT HASH]] (go1.20.4)
 
 COMMANDS:
    start    Start Auto xLan Switcher

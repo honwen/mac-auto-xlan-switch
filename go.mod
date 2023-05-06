@@ -1,4 +1,4 @@
-module honwen/mac-auto-xlan-switch
+module github.com/honwen/mac-auto-xlan-switch
 
 go 1.18
 
