@@ -34,6 +34,9 @@ func init() {
 		log.Printf("# Err: Plz Use with [MacOS]")
 		os.Exit(1)
 	}
+	if len(os.Args) == 2 && strings.HasPrefix(os.Args[1], "-") {
+		return
+	}
 	if currentUser, err := user.Current(); err != nil || currentUser.Username != "root" {
 		log.Printf("# Err: Plz Use with [sudo], %+v", err)
 		os.Exit(1)
